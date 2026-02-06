@@ -1,0 +1,163 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Priya 💖 Will You Be My Valentine?</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Pacifico&display=swap');
+
+body{
+  margin:0;
+  font-family:'Poppins', sans-serif;
+  background: linear-gradient(135deg, #ff758c, #ff7eb3);
+  height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  overflow:hidden;
+}
+
+.card{
+  background:white;
+  width:90%;
+  max-width:380px;
+  border-radius:24px;
+  padding:28px 22px;
+  text-align:center;
+  box-shadow:0 25px 50px rgba(0,0,0,.25);
+  animation: pop 0.9s ease;
+}
+
+@keyframes pop{
+  0%{transform:scale(0.6); opacity:0}
+  100%{transform:scale(1); opacity:1}
+}
+
+h1{
+  font-family:'Pacifico', cursive;
+  color:#ff4d6d;
+  margin-bottom:8px;
+}
+
+p{
+  color:#444;
+  font-size:15px;
+}
+
+.btns{
+  margin-top:18px;
+  display:flex;
+  flex-direction:column;
+  gap:12px;
+}
+
+button{
+  padding:14px;
+  border:none;
+  border-radius:30px;
+  font-size:16px;
+  cursor:pointer;
+  transition:.3s;
+}
+
+.yes{background:#ff4d6d; color:white;}
+.already{background:#ffd166;}
+.no{background:#adb5bd;}
+
+button:hover{transform:scale(1.06)}
+
+.slide{display:none;}
+
+.whatsapp{
+  margin-top:16px;
+  background:#25D366;
+  color:white;
+}
+
+.hearts span{
+  position:absolute;
+  bottom:-40px;
+  font-size:22px;
+  animation: float 6s linear infinite;
+}
+
+@keyframes float{
+  0%{transform:translateY(0); opacity:1}
+  100%{transform:translateY(-110vh); opacity:0}
+}
+</style>
+</head>
+
+<body>
+
+<audio id="bgm" autoplay loop>
+  <source src="https://assets.mixkit.co/music/preview/mixkit-love-letter-1105.mp3" type="audio/mpeg">
+</audio>
+
+<div class="hearts"></div>
+
+<div class="card" id="slide1">
+  <h1>Priya 💖</h1>
+  <p>Ek sawaal hai jo dil se aa raha hai…</p>
+  <p><strong>Will you be my Valentine? 💌</strong></p>
+
+  <div class="btns">
+    <button class="yes" onclick="showSlide('yes')">Yes 😍</button>
+    <button class="already" onclick="showSlide('already')">I am already 😉</button>
+    <button class="no" id="noBtn">No 🙈</button>
+  </div>
+</div>
+
+<div class="card slide" id="yes">
+  <h1>Yayyyy! 💕</h1>
+  <p>
+    Happy Valentine’s Day, Priya 🌹<br><br>
+    Tumhara <strong>YES</strong> mere liye sab kuch hai 🥹❤️<br><br>
+    — Yours,<br>
+    <strong>Samarth</strong>
+  </p>
+
+  <a class="btns" href="https://wa.me/?text=Yes%20Samarth%20❤️%20I%20am%20your%20Valentine%20%F0%9F%92%95">
+    <button class="whatsapp">Send YES on WhatsApp 💬</button>
+  </a>
+</div>
+
+<div class="card slide" id="already">
+  <h1>Hehe 😌</h1>
+  <p>
+    Chahe jo bhi ho…<br>
+    Happy Valentine’s Day, Priya 💐<br><br>
+    Tum hamesha special rahogi 💖<br><br>
+    — Samarth
+  </p>
+</div>
+
+<script>
+const noBtn = document.getElementById('noBtn');
+noBtn.addEventListener('mouseover', ()=>{
+  const x = Math.random()*220 - 110;
+  const y = Math.random()*220 - 110;
+  noBtn.style.transform = `translate(${x}px, ${y}px)`;
+});
+
+function showSlide(id){
+  document.getElementById('slide1').style.display='none';
+  document.getElementById(id).style.display='block';
+}
+
+const hearts = document.querySelector('.hearts');
+setInterval(()=>{
+  const span = document.createElement('span');
+  span.innerHTML = '❤️';
+  span.style.left = Math.random()*100 + 'vw';
+  span.style.animationDuration = (Math.random()*3+3)+'s';
+  hearts.appendChild(span);
+  setTimeout(()=>span.remove(),6000);
+},350);
+</script>
+
+</body>
+</html>
